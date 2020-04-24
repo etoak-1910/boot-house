@@ -136,4 +136,17 @@ public class HouseController {
         return "house/list";
     }
 
+    /**
+     * 更新房源
+     * @param house
+     * @return
+     */
+    @PutMapping("/update")
+    public String update(House house){
+
+        log.info("house - {}",house);
+        houseService.updateHouse(house);
+        return "redirect:/house/toList";
+    }
+
 }

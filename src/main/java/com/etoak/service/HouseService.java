@@ -12,6 +12,10 @@ public interface HouseService {
 
     Page<HouseVo> queryList(int pageNum, int pageSize, HouseVo houseVo, String[] rentalList);
 
-
-
+    /**
+     * 更新
+     * @param house
+     * @return
+     */
+    int updateHouse(House house);
 }
