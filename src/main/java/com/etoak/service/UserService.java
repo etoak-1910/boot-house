@@ -1,6 +1,5 @@
 package com.etoak.service;
 
-import com.etoak.bean.House;
 import com.etoak.bean.User;
 
 public interface UserService {
@@ -11,4 +10,12 @@ public interface UserService {
      * @return
      */
     int addUser(User user);
+
+    /**
+     * 根据用户名查询用户信息
+     * @param name
+     * @return
+     */
+    User queryByName(String name);
+    
 }

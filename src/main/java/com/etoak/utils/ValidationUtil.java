@@ -1,7 +1,6 @@
 package com.etoak.utils;
 
-
-import com.etoak.exception.ParamEcxeption;
+import com.etoak.exception.ParamException;
 import org.apache.commons.collections4.CollectionUtils;
 
 import javax.validation.ConstraintViolation;
@@ -11,27 +10,34 @@ import javax.validation.ValidatorFactory;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * 后端校验工具类
+ * 文档见：https://docs.jboss.org/hibernate/validator/6.0/reference/en-US/htm
+ */
 public class ValidationUtil {
 
     private static Validator validator;
 
-    static{
+    static {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
-    public static void validate(Object object){
+    public static void validate(Object object) {
         Set<ConstraintViolation<Object>> violations = validator.validate(object);
-        if(CollectionUtils.isNotEmpty(violations)){
+
+        if(CollectionUtils.isNotEmpty(violations)) {
             Iterator<ConstraintViolation<Object>> iterator = violations.iterator();
+
+            // 保存错误信息
             StringBuffer messageBuf = new StringBuffer();
-            while (iterator.hasNext()){
+            while(iterator.hasNext()) {
                 ConstraintViolation<Object> violation = iterator.next();
                 String message = violation.getMessage();
-                messageBuf.append(message).append(":");
+                messageBuf.append(message).append(";");
             }
-            throw new ParamEcxeption("参数错误： " + messageBuf.toString());
+            throw new ParamException("参数错误：" + messageBuf.toString());
         }
-
     }
+
 }

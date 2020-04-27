@@ -16,9 +16,8 @@ public interface AreaMapper {
 
     /**
      * 根据id查询地区
-     * @param id
+     * @param area
      * @return
      */
-
     Area queryById(@Param("id") int id);
 }

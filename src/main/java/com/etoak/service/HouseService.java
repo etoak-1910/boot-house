@@ -15,23 +15,23 @@ public interface HouseService {
 
     /**
      * 房源列表查询
-     * @param pageNum
-     * @param pageSize
-     * @param houseVo
+     * @param pageNum : 查询页码
+     * @param pageSize : 每页记录数
+     * @param houseVo : 查询条件
      * @param rentalList
      * @return
      */
     Page<HouseVo> queryList(int pageNum, int pageSize, HouseVo houseVo, String[] rentalList);
 
     /**
-     * 更新
+     * 更新房源
      * @param house
      * @return
      */
     int updateHouse(House house);
 
     /**
-     * 根据id删除
+     * 根据id删除房源
      * @param id
      * @return
      */

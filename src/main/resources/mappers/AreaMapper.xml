@@ -5,17 +5,14 @@
 <mapper namespace="com.etoak.mapper.AreaMapper">
 
     <cache />
+
     <sql id="baseSql">
-
-                 id,
-               pid,
-               name,
-               sort
-
+         id, pid, name, sort
     </sql>
+
     <select id="queryByPid" parameterType="int" resultType="Area">
         SELECT
-            <include refid="baseSql" />
+               <include refid="baseSql" />
           FROM t_boot_area
          WHERE pid = #{pid}
          ORDER BY sort
@@ -23,10 +20,9 @@
 
     <select id="queryById" parameterType="int" resultType="Area">
         SELECT
-        <include refid="baseSql" />
-        FROM t_boot_area
-        WHERE id = #{id}
-
+               <include refid="baseSql" />
+          FROM t_boot_area
+         WHERE id = #{id}
     </select>
 
 </mapper>
